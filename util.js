@@ -8,7 +8,7 @@ const getToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
     },
-    config.JWT_SECRET_KEY,
+    process.env.JWT_SECRET_KEY,
     {
       expiresIn: "48h",
     }
@@ -19,7 +19,7 @@ const isAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, config.JWT_SECRET_KEY, (err, decode) => {
+    jwt.verify(onlyToken, process.env.JWT_SECRET_KEY, (err, decode) => {
       if (err) {
         return res.status(401).send({ msg: "invalid token" });
       }
