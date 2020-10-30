@@ -28,7 +28,7 @@ mongoose
 app.use("/api/users", userRoute);
 app.use("/api/products", producRoute);
 
-const Port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 app.listen(Port, () => {
-  console.log(`server started at port ${Port}`);
+  console.log(`server started at port ${port}`);
 });
