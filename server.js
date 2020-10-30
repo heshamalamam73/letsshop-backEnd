@@ -3,7 +3,7 @@ import data from "./data";
 import config from "./config";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = process.env.MONGODB_URL;
 import userRoute from "./routes/userRoute.js";
 import producRoute from "./routes/productRoute";
 import bodyParser from "body-parser";
