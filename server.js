@@ -26,5 +26,5 @@ app.use("/api/products", producRoute);
 
 const Port = process.env.PORT || 5000;
 app.listen(Port, () => {
-  console.log("server started at port 5000 ");
+  console.log(`server started at port ${Port}`);
 });
