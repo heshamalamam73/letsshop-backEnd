@@ -17,21 +17,13 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .catch((error) => console.log(error));
 
 app.use("/api/users", userRoute);
 app.use("/api/products", producRoute);
 
-// app.get("/api/products/:id", (req, res) => {
-//   const productId = req.params.id;
-//   const Product = data.products.find((x) => x._id === productId);
-//   if (Product) {
-//     res.send(Product);
-//   } else {
-//     res.status(404).send({ msg: "Product Not Found" });
-//   }
-// });
 app.listen(5000, () => {
   console.log("server started at port 5000 ");
 });

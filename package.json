@@ -20,7 +20,7 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "start": "nodemon --watch back-end --exec babel-node server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
