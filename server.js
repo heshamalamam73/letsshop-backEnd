@@ -1,17 +1,17 @@
 import express from "express";
-import data from "./data";
-import config from "./config";
+import config from "./config.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 const mongodbUrl = config.MONGODB_URL;
 import userRoute from "./routes/userRoute.js";
-import producRoute from "./routes/productRoute";
+import producRoute from "./routes/productRoute.js";
 import bodyParser from "body-parser";
 dotenv.config();
-require("dotenv").config({ path: "MONGODB_URL" });
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send("api works good");
@@ -28,7 +28,12 @@ mongoose
 app.use("/api/users", userRoute);
 app.use("/api/products", producRoute);
 
-const port = process.env.PORT || 5000;
-app.listen(Port, () => {
+if (process.env.NODE_ENV) {
+  app.use(express.static("front-end/build"));
+}
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log(`server started at port ${port}`);
 });
